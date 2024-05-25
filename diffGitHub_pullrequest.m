@@ -17,9 +17,9 @@ function diffGitHub_pullrequest(branchname)
     end
 
     % Check if Simulink Model Comparison Toolbox is available
-    if ~license('test', 'Simulink_Model_Comparison_Toolbox')
-        error('Simulink Model Comparison Toolbox is not available.');
-    end
+    %if ~license('test', 'Simulink_Model_Comparison_Toolbox')
+    %    error('Simulink Model Comparison Toolbox is not available.');
+    %end
 
     % Create a temporary folder to store the ancestors of the modified models
     tempdir = fullfile(proj.RootFolder, "modelscopy");
@@ -41,8 +41,8 @@ function report = diffToAncestor(tempdir, fileName)
 
     % Compare models and publish results in a printable report
     % Specify the format using 'pdf', 'html', or 'docx'
-    %comp = visdiff(ancestor, fileName);
-    comp = slxmlcomp.compare(ancestor, fileName);
+    comp = visdiff(ancestor, fileName);
+    %comp = slxmlcomp.compare(ancestor, fileName);
 
     %reportFile = fullfile(tempdir, strcat(fileName, '_report.html'));
     %visdiff.saveReport(comparison, reportFile);
