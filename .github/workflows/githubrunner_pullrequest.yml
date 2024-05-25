@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: diffreports
-           path: ${{ github.workspace }}/*.html
+          path: ${{ github.workspace }}/*.html
 
       - name: Run All Project Tests
         uses: matlab-actions/run-command@v2
