@@ -21,6 +21,10 @@ jobs:
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
 
+      - name: Install Simulink Model Comparison Toolbox
+        run: |
+          matlab -batch "matlab.addons.installToolbox('path/to/SimulinkModelComparisonToolbox.mltbx')"
+
       - name: Start display server
         run: |
           sudo apt-get install -y xvfb
@@ -32,6 +36,8 @@ jobs:
         uses: matlab-actions/run-command@v2
         with:
           command: branch="${{ github.head_ref }}"; diffGitHub_pullrequest(branch)
+        env:
+          DISPLAY: :99
 
       - name: Upload Comparison Reports
         uses: actions/upload-artifact@v3
@@ -43,5 +49,7 @@ jobs:
         uses: matlab-actions/run-command@v2
         with:
           command: runtests
+        env:
+          DISPLAY: :99
 
 #   Copyright 2022-2023 The MathWorks, Inc.
