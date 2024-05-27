@@ -28,6 +28,9 @@ jobs:
           export DISPLAY=:99
           echo "DISPLAY=:99" >> $GITHUB_ENV
 
+      - name: Compare Models to Ancestors  
+        run: xvfb-run path-to-matlab/bin/matlab -batch "branch ='${{ github.head_ref }}'; diffGitHub_pullrequest(branch)"
+
       - name: Compare Models to Ancestors
         uses: matlab-actions/run-command@v2
         with:
