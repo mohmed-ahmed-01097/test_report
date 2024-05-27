@@ -41,8 +41,8 @@ function report = diffToAncestor(tempdir, fileName)
 
     % Compare models and publish results in a printable report
     % Specify the format using 'pdf', 'html', or 'docx'
-    %comp = visdiff(ancestor, fileName);
-    comp = slxmlcomp.compare(ancestor, fileName);
+    comp = visdiff(ancestor, fileName);
+    %comp = slxmlcomp.compare(ancestor, fileName);
 
     %reportFile = fullfile(tempdir, strcat(fileName, '_report.html'));
     %visdiff.saveReport(comparison, reportFile);
